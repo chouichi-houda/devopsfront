@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages{
         stage('Clone'){
-             steps{ sh 'https://github.com/chouichi-houda/devopsfront.git'
+             steps{ sh 'git clone https://github.com/chouichi-houda/devopsfront.git'
              }
         }     
     }
