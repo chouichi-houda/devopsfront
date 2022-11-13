@@ -5,6 +5,34 @@ pipeline {
              steps{ sh 'rm -rf *'
                  sh 'git clone https://github.com/chouichi-houda/devopsfront.git'
              }
-        }     
-    }
-}
+        }
+
+
+
+    stage('Build docker image'){
+                                steps{
+                                    script{
+                                       sh 'docker build -t rahmachaabane/angularproject .'
+                                    }
+                                }
+                            }
+
+
+
+
+         stage('Docker login') {
+
+                                            steps {
+                                             sh 'echo "login Docker ...."'
+                      	sh 'docker login -u rahmachaabane -p adminnn123'
+                                  }  }
+   		 stage('Docker push') {
+
+                    steps {
+                         sh 'echo "Docker is pushing ...."'
+                        	sh 'docker push rahmachaabane/angularproject'
+                   }
+            }
+
+         }
+      }
